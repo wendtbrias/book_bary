@@ -1,0 +1,21 @@
+<div class="w-[80%] mx-auto py-10">
+    <h2 class="text-2xl font-semibold text-blue-400"><%= locals.author &&  locals.author.name %> &raquo;</h2>
+    <div class="grid grid-cols-4 gap-5 mt-10">
+       <% if(locals.book != null && locals.book.length > 0 ){ %>
+            <% locals.book.map(book => {%>
+             <div class="w-full">
+                 <img src="<%= book.coverImagePath %>" class="w-full h-[280px] rounded-md"/>
+                 <div class="description mt-5">
+                     <h1 class="text-blue-300 font-semibold text-xl"><%= book.title %></h1>
+                     <h4 class="text-blue-200 font-normal text-md mt-2">Pagecount : <%= book.pageCount %></h4>
+                     <h4 class="text-blue-200 font-normal text-md mt-2">description : <%= book.description %></h4>
+                 </div>
+             </div>
+           <% }) %>
+        <% } else {%>
+            <div class="w-full bg-blue-200 py-2 px-3 rounded-md">
+                <h2 class="text-xl text-blue-500 font-semibold">No book here</h2>
+            </div>
+        <% } %>
+    </div>
+</div>

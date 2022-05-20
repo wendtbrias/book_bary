@@ -1,0 +1,76 @@
+<div class="w-[80%] mx-auto py-10">
+  <h2 class="text-blue-400 font-semibold text-xl">Update Book</h2>
+  <%- include('../components/error') %>
+  <% if(locals.book != null && locals.book != undefined) {%>
+  <form
+    method="post"
+    action="/book?_method=PUT"
+    class="w-[68%] flex items-center justify-between flex-wrap mt-7"
+  >
+    <input type="hidden" value="<%= locals.book._id %>" name="id">
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200" >Title</label>
+      <input
+        name="title"
+        type="text"
+        value="<%= book.title %>"
+        class="w-full py-2 px-3 rounded-md w-full mt-3"
+      />
+    </div>
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">Author</label>
+      <select name="author" class="w-full py-2 px-3 rounded-md">
+        <% if(locals.author != null && locals.author.length > 0) { %>
+        <option diselected>Select author</option>
+        <% locals.author.map(author => {%>
+        <option selected value="<%= author._id %>"><%= author.name %></option>
+        <% }) %> <% } %>
+      </select>
+    </div>
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">Publishdate</label>
+      <input
+        name="publishDate"
+        type="date"
+        value="<%= new Date(book.publishDate).toDateString() %>"
+        class="w-full py-2 px-3 rounded-md w-full mt-3"
+      />
+    </div>
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">pageCount</label>
+      <input
+        name="pageCount"
+        type="number"
+        value="<%= book.pageCount %>"
+        class="w-full py-2 px-3 rounded-md w-full mt-3"
+      />
+    </div>
+    <div class="mb-3 w-[60%]">
+      <label class="text-md text-blue-200">Description</label>
+      <textarea
+
+        name="description"
+        class="w-full h-[140px] rounded-md"
+      >
+        <%= book.description %>
+      </textarea>
+    </div>
+    <div class="mb-3 w-[30%]">
+      <input name="cover" type="file" multiple="false" class="filepond" />
+    </div>
+    <div class="w-full text-right mt-7">
+      <button
+        type="submit"
+        class="bg-blue-400 text-white rounded-md py-2 px-3 font-semibold"
+      >
+        Update
+      </button>
+      <button
+        class="bg-orange-400 text-white rounded-md py-2 px-3 font-semibold"
+      >
+        Clear
+      </button>
+    </div>
+  </form>
+  <%}%>
+</div>

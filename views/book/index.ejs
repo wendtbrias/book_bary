@@ -1,0 +1,30 @@
+<div class="w-[80%] mx-auto py-10">
+    <%- include('../components/error') %>
+     <h2 class="text-blue-400 font-semibold text-xl">Book page</h2>
+    <form class="w-[68%] flex items-center justify-between flex-wrap mt-7">
+        <div class="w-[48%] mb-3">
+            <label class="text-blue-300 font-medium text-md">Title</label>
+            <input type="text" class="w-full py-2 px-3 rounded-md mt-3" name="title">
+        </div>
+        <div class="w-[48%] mb-3">
+            <label class="text-blue-300 font-medium text-md">Author</label>
+            <input type="text" class="w-full py-2 px-3 rounded-md mt-3" name="author">
+        </div>
+        <div class="w-[48%] mb-3">
+            <label class="text-blue-300 font-medium text-md">PublishDate before</label>
+            <input type="date" class="w-full py-2 px-3 rounded-md mt-3" name="publishDatebefore">
+        </div>
+        <div class="w-[48%] mb-3">
+            <label class="text-blue-300 font-medium text-md">PublishDate after</label>
+            <input type="date" class="w-full py-2 px-3 rounded-md mt-3" name="publishDateafter">
+        </div>
+        <div class="w-full text-right mt-7">
+            <button class="py-2 px-3 text-white font-semibold rounded-md bg-blue-400">Search</button>
+            <button class="py-2 px-3 text-white font-semibold rounded-md bg-orange-400">Clear</button>
+
+        </div>
+    </form>
+     <div class="grid grid-cols-5 gap-5 mt-12">
+       <%- include(`../components/bookDisplay`) %>
+     </div>
+</div>

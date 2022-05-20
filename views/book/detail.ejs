@@ -1,0 +1,47 @@
+<div class="w-[80%] mx-auto py-10">
+  <%- include('../components/error') %>
+  <div class="w-[70%] mx-auto mt-10 flex items-start">
+    <div class="w-[30%]">
+      <img
+        src="<%= book.coverImagePath %>"
+        class="w-full h-[300px] rounded-md"
+      />
+      <div class="buttons flex items-center mt-5 justify-between">
+        <a  href="/book/update/<%=book._id %>" class="w-[49%] text-center bg-blue-400 text-white font-semibold py-2 rounded-md"
+        >
+          Update
+        </a>
+        <form
+          class="inline-block w-[49%]"
+          method="POST"
+          action="/book?_method=DELETE"
+        >
+          <input type="hidden" value="<%= book._id %>" name="id" />
+          <button
+            type="submit"
+            class="w-full bg-red-400 text-white font-semibold py-2 rounded-md"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="w-[40%] ml-7">
+      <h2 class="text-white text-lg font-semibold">
+        Title : <%= book.title %>
+      </h2>
+      <h2 class="text-white text-md mt-3 font-semibold">
+        Author : <%= book.author ? book.author.name : "No author " %>
+      </h2>
+      <h2 class="text-white text-md mt-3 font-semibold">
+        pageCount : <%= book.pageCount %>
+      </h2>
+      <h2 class="text-white text-md mt-3 font-semibold">
+        description : <%= book.description %>
+      </h2>
+      <h2 class="text-white text-md mt-3 font-semibold">
+        Publishdate : <%= new Date(book.publishDate).toDateString() %>
+      </h2>
+    </div>
+  </div>
+</div>

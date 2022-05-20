@@ -1,0 +1,39 @@
+<div class="w-[80%] mx-auto py-10 mt-2">
+    <h2 class="text-xl text-blue-400 font-semibold">Search author </h2>
+    <div class="form-component">
+        <form method="get" action="/author" class="w-[60%] mt-5 flex items-center justify-between flex-wrap">
+            <div class="w-[48%] mb-3">
+                <label class="text-blue-300 font-normal text-md mb-2">Name</label>
+                <input name="name" type="text" class="w-full py-2 px-3 rounded-md mt-3"/>
+            </div>
+            <div class="w-[48%] mb-3">
+                <label class="text-blue-300 font-normal text-md mb-2">Pen name</label>
+                <input name="penName" type="text" class="w-full py-2 px-3 rounded-md mt-3"/>
+            </div>
+            <div class="w-full text-right mt-7">
+                <button class="py-2 px-4 rounded-md bg-orange-400 text-white">Clear</button>
+                <button type="submit" class="py-2 px-4 rounded-md bg-blue-400 text-white">Search</button>
+
+            </div>
+        </form>
+    </div>
+    <div class="w-full grid grid-cols-4 gap-5 mt-12">
+        <% if(locals.data != null && locals.data.length > 0) {%>
+            <% locals.data.map((author) => {%>
+            <div class="w-full border border-white py-3 px-4 rounded-md">
+                <h2 class="text-blue-300 font-semibold text-lg">Name : <%= author.name %> </h2>
+                <h4 class="text-blue-200 font-medium text-sm mt-2">Pen name : <%= author.penName %></h4>
+                <div class="actions mt-5">
+                    <a href="/author/update/<%= author._id %>" class="bg-blue-400 text-white text-sm py-2 px-3 rounded-md ">Update</a>
+                    <a href="/author/view/<%= author._id %>" class="bg-orange-400 text-sm text-white py-2 px-3 rounded-md ">View</a>
+                    <form class="inline-block" method="post" action="/author?_method=DELETE">
+                        <input type="hidden" value="<%= author._id %>" name="id">
+                        <button type="submit" class="bg-red-400 text-sm text-white py-2 px-3 rounded-md ">Delete</button>
+                    </form>
+
+                </div>
+            </div>
+        <% }) %>
+        <% } %>
+    </div>
+</div>

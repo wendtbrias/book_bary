@@ -1,0 +1,9 @@
+<% if(locals.book != null && locals.book != '')  {%>
+    <% locals.book.map(book =>  {%>
+        <div class="w-full">
+            <img src="<%= book.coverImagePath %>" class="w-full h-[280px] rounded-md">
+            <h1 class="text-xl text-blue-400 font-semibold mt-4"><%= book.title %></h1>
+            <a href="/book/<%= book._id %>" class="text-blue-500 underline font-normal mt-2">Detail</a>
+        </div>
+    <% }) %>
+<% } %>

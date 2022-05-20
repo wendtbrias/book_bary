@@ -1,0 +1,70 @@
+<div class="w-[80%] mx-auto py-10">
+  <h2 class="text-blue-400 font-semibold text-xl">Add Book</h2>
+  <%- include('../components/error') %>
+  <form
+    method="post"
+    action="/book"
+    class="w-[68%] flex items-center justify-between flex-wrap mt-7"
+  >
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">Title</label>
+      <input
+        name="title"
+        type="text"
+        class="w-full py-2 px-3 rounded-md w-full mt-3"
+      />
+    </div>
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">Author</label>
+      <select name="author" class="w-full py-2 px-3 rounded-md">
+        <% if(locals.author != null && locals.author.length > 0) { %>
+        <option diselected>Select author</option>
+        <% locals.author.map(author => {%>
+        <option selected value="<%= author._id %>"><%= author.name %></option>
+        <% }) %> <% } %>
+      </select>
+    </div>
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">Publishdate</label>
+      <input
+        name="publishDate"
+        type="date"
+        class="w-full py-2 px-3 rounded-md w-full mt-3"
+      />
+    </div>
+    <div class="mb-3 w-[48%]">
+      <label class="text-md text-blue-200">pageCount</label>
+      <input
+        name="pageCount"
+        type="number"
+        class="w-full py-2 px-3 rounded-md w-full mt-3"
+      />
+    </div>
+    <div class="mb-3 w-[60%]">
+      <label class="text-md text-blue-200">Description</label>
+      <textarea
+        name="description"
+        class="w-full h-[140px] rounded-md"
+      ></textarea>
+    </div>
+    <div class="mb-3 w-[30%]">
+      <input name="cover" type="file" multiple="false" class="filepond" />
+    </div>
+    <div class="w-full text-right mt-7">
+      <button
+        type="submit"
+        class="bg-blue-400 text-white rounded-md py-2 px-3 font-semibold"
+      >
+        Submit
+      </button>
+      <button
+        class="bg-orange-400 text-white rounded-md py-2 px-3 font-semibold"
+      >
+        Clear
+      </button>
+    </div>
+  </form>
+  <div class="w-full grid grid-cols-5 gap-5">
+    <%- include("../components/bookDisplay") %>
+  </div>
+</div>
